@@ -23,7 +23,20 @@ concurrency:
 
 jobs:
   # Build job
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cache deps
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json')}}
+      - name: Install dependecies
+        run: npm ci
   build:
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
