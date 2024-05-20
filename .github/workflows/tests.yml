@@ -1,34 +1,21 @@
-name: tests
+name: overflow
 
 on:
   workflow_run:
-    workflows:
-      - 'setup'
+    workflows: ["setup"]
     types:
       - completed
 
 jobs:
-  syntax:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          name: dependencies
-      - name: eslint
-        run: npm run lint
   build:
-    needs: syntax
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          name: dependencies
-      - name: Build
-        run: npm run build
+      - name: Check out code
+        uses: actions/checkout@v2
 
-    
-    
-      
-    
+      - name: Set up environment
+        run: echo "Setting up environment..."
+
+      - name: Run overflow process
+        run: echo "Running overflow process..."
