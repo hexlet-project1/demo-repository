@@ -2,7 +2,7 @@
 import _ from "lodash";
 function displayTime() {
     let element = document.getElementById("clock"); // Найти элемент с id="clock" 
-    let now = new Date();    // Получить текущее время
+    //let now = new Date();    // Получить текущее время
     element.innerHTML = _.sum([5,6,7]);//now.toLocaleTimeString(); // Отобразить время
     //setTimeout(displayTime, 1000);    // Вызывать функцию каждую секунду
 }
