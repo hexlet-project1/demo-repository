@@ -2,7 +2,8 @@ name: run tests
 
 on:
   workflow_run:
-    workflows: [setup]
+    workflows:
+      - setup
     types:
       - completed
 
