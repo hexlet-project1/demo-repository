@@ -48,6 +48,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: setup
+        run: npm ci
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
