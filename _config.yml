@@ -1,1 +1,1 @@
-include: /node_modules
+include             : [".htaccess", "node_modules"]
