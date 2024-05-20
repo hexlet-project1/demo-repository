@@ -1,0 +1,30 @@
+name: run tests
+
+on:
+  push:
+    branches: 
+      - '*'
+  pull_request:
+    types: [opened, edited, reopened]
+  merge_group:
+    branches:
+      - '*'
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+    - name: install dependencies
+      run: npm ci
+    - name: run lint
+      run: npm run lint
+  functional:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+    
+    
+      
+    
