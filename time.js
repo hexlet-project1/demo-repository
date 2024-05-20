@@ -1,5 +1,5 @@
 // Файл time.js
-//import _ from "lodash";
+import _ from "lodash";
 function displayTime() {
     let element = document.getElementById("clock"); // Найти элемент с id="clock" 
     let now = new Date();    // Получить текущее время
