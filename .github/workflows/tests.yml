@@ -3,10 +3,10 @@ name: tests
 on:
   workflow_run:
     workflows:
-      - setup
+      - 'setup'
     types:
       - completed
-  push:
+
 jobs:
   syntax:
     runs-on: ubuntu-latest
