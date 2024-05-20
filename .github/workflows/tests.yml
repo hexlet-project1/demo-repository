@@ -6,7 +6,7 @@ on:
       - setup
     types:
       - completed
-
+  push:
 jobs:
   syntax:
     runs-on: ubuntu-latest
