@@ -32,10 +32,8 @@ jobs:
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' || !!github.repository.artifact.dependencies != 'true' }}
         name: List the state of node modules
         continue-on-error: true
-        run: npm list
-    
-      - name: Install dependencies
         run: npm ci
+
       - name: upload dependencies
         uses: actions/upload-artifact@v4
         with:
