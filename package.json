@@ -4,7 +4,7 @@
   "type": "module",
   "description": "A sample package.json",
   "scripts": {
-    "lint": "npx eslint .",
+    "lint": "npx --ignore-existing eslint .",
     "build": "npx eslint ."
   },
   "dependencies": {
