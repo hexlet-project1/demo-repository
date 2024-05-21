@@ -50,6 +50,8 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: dependencies
+      - name: ls
+        run: ls -al
       - name: eslint
         run: npm run lint
   build:
