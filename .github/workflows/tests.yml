@@ -6,6 +6,7 @@ on:
       - setup
     types:
       - completed
+      - requested
 
 jobs:
   syntax:
