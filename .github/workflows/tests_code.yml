@@ -15,9 +15,9 @@ on:
 jobs:
   dependencies:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        test: [lint, build]
+    #strategy:
+      #matrix:
+        #test: [lint, build]
     steps:
       - uses: actions/checkout@v4
       - name: Cache node modules
