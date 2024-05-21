@@ -1,4 +1,4 @@
-name: setup
+name: tests_code
 
 on:
   push:
@@ -6,6 +6,8 @@ on:
       - '*'
   pull_request:
     types: [opened, edited, reopened]
+    branches: 
+      - '*'
   merge_group:
     branches:
       - '*'
@@ -40,6 +42,26 @@ jobs:
           name: dependencies
           path: node_modules
           retention-days: 15
+  syntax:
+    needs: dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: dependencies
+      - name: eslint
+        run: npm run lint
+  build:
+    needs: syntax
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: dependencies
+      - name: Build
+        run: npm run build
     
       
     
