@@ -54,7 +54,7 @@ jobs:
       - name: ls
         run: ls -al
       - name: eslint
-        run: npm run lint
+        run: sudo npm run lint
   build:
     needs: syntax
     runs-on: ubuntu-latest
@@ -65,7 +65,7 @@ jobs:
           name: dependencies
           path: node_modules
       - name: Build
-        run: npm run build
+        run: sudo npm run build
     
       
     
