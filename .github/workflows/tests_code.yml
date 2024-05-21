@@ -40,7 +40,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: eslint
+      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true'}}
+        name: List the state of node modules
+        continue-on-error: true
+        run: npm install
+      - name: lint
         run: npm run lint
   build:
     needs: syntax
