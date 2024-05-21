@@ -37,8 +37,16 @@ jobs:
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true'}}
         name: List the state of node modules
         continue-on-error: true
+        run: npm list
+
+      - name: Install dependencies
         run: npm install
-      - name: ${ matrix.test }}
+  
+  g2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 2
         run: #npm run ${{ matrix.test }
               ls -al
 
