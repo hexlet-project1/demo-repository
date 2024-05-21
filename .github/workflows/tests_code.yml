@@ -15,6 +15,9 @@ on:
 jobs:
   dependencies:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        test: [lint, build]
     steps:
       - uses: actions/checkout@v4
       - name: Cache node modules
@@ -35,28 +38,9 @@ jobs:
         name: List the state of node modules
         continue-on-error: true
         run: npm ci
-  syntax:
-    needs: dependencies
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true'}}
-        name: List the state of node modules
-        continue-on-error: true
-        run: npm install
-      - name: lint
-        run: npm run lint
-  build:
-    needs: syntax
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true'}}
-        name: List the state of node modules
-        continue-on-error: true
-        run: npm install
-      - name: lint
-        run: npm run build
+      - name: ${{ matrix.test }}
+        run: npm run ${{ matrix.test }}
+
     
       
     
