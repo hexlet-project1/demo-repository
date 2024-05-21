@@ -45,9 +45,6 @@ jobs:
   syntax:
     needs: dependencies
     runs-on: ubuntu-latest
-    permissions: 
-      contents:
-        write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
@@ -57,7 +54,7 @@ jobs:
       - name: chmod
         run: sudo chmod +x package.json
       - name: eslint
-        run: sudo npm run lint
+        run: npx eslint .
   build:
     needs: syntax
     runs-on: ubuntu-latest
