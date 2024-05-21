@@ -4,8 +4,8 @@
   "type": "module",
   "description": "A sample package.json",
   "scripts": {
-    "lint": "npx eslint .",
-    "build": "npx eslint ."
+    "lint": "sudo npx eslint .",
+    "build": "sudo npx eslint ."
   },
   "dependencies": {
     "@primer/css": "17.0.1",
