@@ -31,39 +31,24 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' || !!github.repository.artifact.dependencies != 'true' }}
+      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true'}}
         name: List the state of node modules
         continue-on-error: true
         run: npm ci
-
-      - name: upload dependencies
-        uses: actions/upload-artifact@v4
-        with:
-          name: dependencies
-          path: node_modules
-          retention-days: 15
   syntax:
     needs: dependencies
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: ci
-        run: npm ci
-      - name: chmod
-        run: sudo chmod +x package.json
       - name: eslint
-        run: sudo npm run lint
+        run: npm run lint
   build:
     needs: syntax
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          name: dependencies
-          path: node_modules
       - name: Build
-        run: sudo npm run build
+        run: npm run build
     
       
     
