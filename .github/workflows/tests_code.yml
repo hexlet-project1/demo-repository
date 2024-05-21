@@ -40,6 +40,7 @@ jobs:
         run: npm ci
       - name: ${{ matrix.test }}
         run: npm run ${{ matrix.test }}
+              ls -al
 
     
       
