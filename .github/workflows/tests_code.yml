@@ -55,7 +55,7 @@ jobs:
         run: 
           ls -al
       - name: chmod
-        run: chmod +x ./.github/scripts/xxx.sh
+        run: chmod +x ./.github/scripts/lint.sh
       - name: eslint
         run: sudo npm run lint
   build:
