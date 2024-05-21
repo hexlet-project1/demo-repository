@@ -52,7 +52,10 @@ jobs:
           name: dependencies
           path: node_modules
       - name: ls
-        run: ls -al
+        run: 
+          ls -al
+      - name: chmod
+        run: chmod +x ./github/scripts/xxx.sh
       - name: eslint
         run: sudo npm run lint
   build:
