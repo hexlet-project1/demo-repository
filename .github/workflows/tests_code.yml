@@ -52,7 +52,7 @@ jobs:
           name: dependencies
           path: node_modules
       - name: chmod
-        run: chmod +x package.json
+        run: sudo chmod +x package.json
       - name: eslint
         run: sudo npm run lint
   build:
