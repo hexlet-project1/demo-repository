@@ -6,7 +6,9 @@ on:
       - setup
     types:
       - completed
-
+  push:
+    branches: 
+      - '*'
 
 jobs:
   syntax:
