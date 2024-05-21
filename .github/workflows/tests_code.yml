@@ -50,6 +50,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: dependencies
+          path: $GITHUB_WORKSPACE/node_modules
       - name: ls
         run: ls -al
       - name: eslint
